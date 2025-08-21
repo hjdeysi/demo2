@@ -12,7 +12,7 @@ for row in cur.execute('SELECT rowid, name, letters, note FROM db ORDER BY name'
             note = st.text_area('Note', row[3])
             if st.form_submit_button('Save'):
                 cur.execute('UPDATE db SET name=?, letters=?, note=? WHERE name=?;',(name, str(letters), note, str(row[1])))
-                con.commit(); st.experimental_rerun()
+                con.commit(); st.rerun()
             if st.form_submit_button('Delete'):
                 cur.execute(f'DELETE FROM db WHERE rowid="{row[0]}";')
                 con.commit(); st.experimental_rerun()
