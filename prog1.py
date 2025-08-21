@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+#segunda version
+
 # Título y subtítulos
 st.title("Mi primera aplicación con Streamlit 🎉")
 st.header("Ejemplo usando pandas y numpy")
