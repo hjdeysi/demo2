@@ -1,12 +1,10 @@
 import streamlit as st, sqlite3, ast
 con = sqlite3.connect('db.db'); cur = con.cursor()
-cur.execute('CREATE TABLE IF NOT EXISTS db(name TEXT, letters TEXT, note
-TEXT)')
+cur.execute('CREATE TABLE IF NOT EXISTS db(name TEXT, letters TEXT, note TEXT)')
 if st.button('Add New Row'):
     cur.execute('INSERT INTO db(name, letters, note) VALUES(?,?,?)',('','[]',''))
     con.commit()
-for row in cur.execute('SELECT rowid, name, letters, note FROM db ORDER BY
-name'):
+for row in cur.execute('SELECT rowid, name, letters, note FROM db ORDER BY name'):
     with st.expander(row[1]):
         with st.form(f'ID-{row[0]}'):
             name = st.text_input('Name', row[1])
